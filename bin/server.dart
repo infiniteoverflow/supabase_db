@@ -20,7 +20,6 @@ void main(List<String> args) async {
 
   if (port == null) {
     stdout.writeln('Could not parse port value "$portStr" into a number.');
-    // 64: command line usage error
     exitCode = 64;
     return;
   }
@@ -41,8 +40,9 @@ Future<shelf.Response> _echoRequest(shelf.Request request) async{
 }
 
 Future<shelf.Response> _echoUsers(shelf.Request request) async{
-  final client = SupabaseClient('https://phrxhasexibmsuolzpxa.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNjIwOTM4MCwiZXhwIjoxOTUxNzg1MzgwfQ.k1KrkZRvaz64EwQnCV1Rf5s8Jv-7ZAEcZ5enklYl3Os');
+  final client = SupabaseClient('<SUPABASE URL>', '<SUPABASE KEY>');
 
+  // Retrieve data from 'users' table
   final response =  await client
       .from('users')
       .select()
